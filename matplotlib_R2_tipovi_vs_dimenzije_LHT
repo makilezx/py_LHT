@@ -43,12 +43,24 @@ df.plot(kind='line',x='dimenzije_LHT',y='tip_R2_adj', color='red', ax=ax)
 
 plt.show()
 
-#sort
+#bar
 plt.figure(figsize=(15,5))
 plt.style.use('seaborn-darkgrid')
 plt.ylabel("R2 adj")
 plt.xlabel("Dimenzije LHT")
-plt.plot(dimenzije_LHT, dimenzija_R2_adj, label="dimenzije: X - znacajne su, O - nisu", marker="x")
-plt.plot(dimenzije_LHT, tip_R2_adj, label="tipovi: X - znacajni su, o - nisu", marker="x")
+plt.bar(dimenzije_LHT, dimenzija_R2_adj, label="dimenzije", color="#2ca25f")
+plt.bar(dimenzije_LHT, tip_R2_adj, label="tipovi", color="#99d8c9")
 plt.legend()
 plt.show()
+
+
+#sort
+tab_po_dim = data.sort_values(by="1Dimenzija (R2adj)", ascending= False)
+tab_po_dim
+plt.figure(figsize=(15,5))
+plt.bar(dimenzije_LHT, tab_po_dim["1Dimenzija (R2adj)"], label="Dim")
+plt.bar(dimenzije_LHT, tab_po_dim["2Tip (R2adj)"], label="Tip")
+plt.title("sortirano")
+plt.legend()
+plt.show()
+
